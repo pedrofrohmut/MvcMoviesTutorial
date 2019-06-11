@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+﻿using Mvc.Db;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Mvc.Db;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Mvc
 {
@@ -35,7 +30,7 @@ namespace Mvc
 
       services
         .AddDbContext<ApplicationDbContext>(options =>
-          options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+          options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
     }
